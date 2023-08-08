@@ -21,8 +21,11 @@ build Dockerfile
 create container which mapped to 4 port
 
 `docker run -p 1111:8000 -d fastapi-app`
+
 `docker run -p 2222:8000 -d fastapi-app`
+
 `docker run -p 3333:8000 -d fastapi-app`
+
 `docker run -p 4444:8000 -d fastapi-app`
 
 now, go to `0.0.0.0:1111` or other ports, you will see the result
