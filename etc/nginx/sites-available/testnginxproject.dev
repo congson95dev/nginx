@@ -1,0 +1,68 @@
+server {
+        # listen to port 82
+	listen 82;
+        listen [::]:82;
+
+        root /var/www/test-nginx-project/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        # this won't work until we buy the domain name
+        server_name testnginxproject.dev www.testnginxproject.dev;
+        
+        # ROUTER
+
+        # with this, when we go to /test1, 
+        # it will redirect to html/test1/index.html
+        # because we using "root"
+	location /test1 {
+		root /var/www/test-nginx-project/html;
+	}
+        
+        # if we go to /test2 => it will redirect to html/test1/index.html
+        # because we using "alias" instead of "root"
+	location /test2 {
+		alias /var/www/test-nginx-project/html/test1;
+	}
+
+        # if we go to /test3 => 
+        # it will check if html/test3/test3.html exists, if yes, redirect to it
+        # else if /test3/test3.html is not exists, then redirect to html/index.html
+        # else if /index.html is not exists, then redirect to 404 page (default 404 page of nginx) 
+        location /test3 {
+		root /var/www/test-nginx-project/html;
+                try_files /test3/test3.html /index.html =404;
+	}
+
+        # regular expression
+        # we need to use ~* so nginx will understand that we using regular expression
+        # if we go to /test4/1 .. /test4/9 => it will redirect to html/index.html
+        location ~* /test4/[0-9] {
+		root /var/www/test-nginx-project/html;
+                try_files /index.html =404;
+        }
+
+        # REDIRECT
+
+        # redirect
+        # if we go to /test5, it will ACTUAL redirect to /test1
+        # which mean it will change the url in browser and redirect to that url
+        # notes: 307 is stand for http request
+        location /test5 {
+                return 307 /test1;
+        }
+
+        # REWRITE URL
+
+        # rewrite url
+        # if we go to /test6, it will render the content of /test2 without changing the url
+        rewrite /test6 /test2;
+
+        # rewrite url but with variable
+        # if we go to /test6/2, it will render the content of /test4/2 without changing the url
+        # notes: (\w+) is the variable we put, it will receive throught $1
+        rewrite ^/test6/(\w+) /test4/$1;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
