@@ -1,5 +1,9 @@
 # this is tutorial for nginx
 
+This tutorial is followed by:
+
+https://www.youtube.com/watch?v=7VAI73roXaY
+
 ## How to run:
 
 move this config file from our project to nginx config folder:
