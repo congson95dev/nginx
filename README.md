@@ -14,15 +14,11 @@ create symlink:
 
 `sudo ln -s /etc/nginx/sites-available/testnginxproject.dev /etc/nginx/sites-enabled/`
 
-go to `fastapi_simple_app` folder
-
-`cd fastapi_simple_app`
-
-run docker compose to create 4 container which mapped to 4 port
+run docker compose to create 2 container which mapped to 2 port
 
 `docker compose up -d --build`
 
-now, go to `0.0.0.0:1111` or other ports, you will see the result
+now, go to `0.0.0.0:1000` or `0.0.0.0:2000`, you will see the result
 
 check if the config file valid:
 
@@ -34,7 +30,7 @@ reload nginx:
 
 read file `nginx/sites-available/testnginxproject.dev` to see the configuration
 
-for load balancer feature, go to `localhost:82/load_balancer`, it will round robin to :1111, :2222 ..
+for api gateway feature, go to `localhost:82/fast-app-no-1` or `localhost:82/fast-app-no-2`, it will redirect to it's related link
 
 ## Ability of Nginx
 
@@ -45,6 +41,8 @@ redirect
 rewrite url
 
 load balancer
+
+api gateway (https://youtu.be/kZV1iVts3Ds?list=UULFCOP-RoCEXCrpDWH12-Nn5w&t=2920)
 
 ## Notes:
 

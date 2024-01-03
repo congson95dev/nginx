@@ -1,12 +1,3 @@
-# load balancer replica server setup
-# notes: backendserver is just some random name
-upstream backendserver {
-        server 127.0.0.1:1111;
-        server 127.0.0.1:2222;
-        server 127.0.0.1:3333;
-        server 127.0.0.1:4444;
-}
-
 server {
         # listen to port 82
 	listen 82;
@@ -18,11 +9,17 @@ server {
         # this won't work until we buy the domain name
         server_name testnginxproject.dev www.testnginxproject.dev;
 
-        # load balancer route setup
-        # if we go to /load_balancer, it will automatic load to :1111, :2222 .. based on round robin algorithms
-        location /load_balancer {
-                proxy_pass http://backendserver/;
-        }
+        # API Gateway
+        
+        # with this, when you go to /fast-app-no-1,
+        # it will redirect to http://0.0.0.0:1000/
+	location /fast-app-no-1 {
+		proxy_pass http://0.0.0.0:1000/;
+	}
+
+	location /fast-app-no-2 {
+		proxy_pass http://0.0.0.0:2000/;
+	}
         
         # ROUTER
 
