@@ -6,4 +6,4 @@ COPY . ./fastapi_simple_app/
 WORKDIR /fastapi_simple_app
 
 # Install the project dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r fastapi_simple_app/requirements.txt
