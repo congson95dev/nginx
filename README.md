@@ -18,19 +18,9 @@ go to `fastapi_simple_app` folder
 
 `cd fastapi_simple_app`
 
-build Dockerfile
+run docker compose to create 4 container which mapped to 4 port
 
-`docker build -t fastapi-app .`
-
-create container which mapped to 4 port
-
-`docker run -p 1111:8000 -d fastapi-app`
-
-`docker run -p 2222:8000 -d fastapi-app`
-
-`docker run -p 3333:8000 -d fastapi-app`
-
-`docker run -p 4444:8000 -d fastapi-app`
+`docker compose up -d --build`
 
 now, go to `0.0.0.0:1111` or other ports, you will see the result
 
@@ -41,8 +31,6 @@ check if the config file valid:
 reload nginx:
 
 `sudo service nginx reload`
-
-go to `localhost:82`
 
 read file `nginx/sites-available/testnginxproject.dev` to see the configuration
 

@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  fastapi-simple-app-1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "1111:8000"
+    volumes:
+      - .:/app
+    restart: always
+
+  fastapi-simple-app-2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "2222:8000"
+    volumes:
+      - .:/app
+    restart: always
+  
+  fastapi-simple-app-3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "3333:8000"
+    volumes:
+      - .:/app
+    restart: always
+
+  fastapi-simple-app-4:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "4444:8000"
+    volumes:
+      - .:/app
+    restart: always
