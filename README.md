@@ -14,10 +14,6 @@ create symlink:
 
 `sudo ln -s /etc/nginx/sites-available/testnginxproject.dev /etc/nginx/sites-enabled/`
 
-go to `fastapi_simple_app` folder
-
-`cd fastapi_simple_app`
-
 run docker compose to create 4 container which mapped to 4 port
 
 `docker compose up -d --build`
@@ -45,6 +41,8 @@ redirect
 rewrite url
 
 load balancer
+
+api gateway (https://youtu.be/kZV1iVts3Ds?list=UULFCOP-RoCEXCrpDWH12-Nn5w&t=2920)
 
 ## Notes:
 
