@@ -37,6 +37,8 @@ rewrite url
 
 load balancer
 
+api gateway (https://youtu.be/kZV1iVts3Ds?list=UULFCOP-RoCEXCrpDWH12-Nn5w&t=2920)
+
 ## Notes:
 
 `try_files` always need to be end by `=404`
